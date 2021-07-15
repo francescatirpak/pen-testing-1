@@ -65,3 +65,30 @@ Use Zenmap to execute a vulnerable script:
 * `nmap -T4 -A -v --script smb-enum-shares 192.168.0.10`
 
 # GoodCorp, Inc.
+
+## Summary
+
+GoodSecurity was tasked with performing an internal penetration test on GoodCorp’s CEO, Hans Gruber. An internal penetration test is a dedicated attack against internally connected systems. The goal of this test is to perform attacks similar to those of a hacker and attempt to infiltrate Hans’ computer to determine if it is at risk. GoodSecurity’s overall objective was to exploit any vulnerable software, find a secret recipe file on Hans’ computer, and report the findings back to GoodCorp.
+
+The internal penetration test found several alarming vulnerabilities on Hans’ computer: When performing the attacks, GoodSecurity was able to gain access to his machine and find the secret recipe file by exploiting two programs with major vulnerabilities. The details of the attack are below.
+
+## Findings
+
+**Machine IP:**
+192.168.0.20
+
+**Hostname:**
+MSEDGEWIN10
+
+**Vulnerability Exploited:**
+Icecast Header Overwrite
+
+**Vulnerability Explanation:**
+The Icecast Header Overwrite exploit exploits a buffer overflow in icecast’s header parsing. By sending 32 HTTP headers, the request writes one past the maximum pointer array, generally overwriting inconsequential files (readable not executable). Icecast thinks the thread is still in use through ExitThread, eventually maxing out the threadpool. ([Source](https://www.rapid7.com/db/modules/exploit/windows/http/icecast_header/))
+
+**Severity:**
+Because the vulnerability allows an attacker to execute arbitrary code on the victim’s host machine with Icecast server process privileges, this vulnerability should be classified as high severity.
+
+## Proof of Concept
+
+Perform a service and version scan using Nmap to determine which services are up and running.
