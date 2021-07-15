@@ -10,6 +10,7 @@ Altoro Mutual, a banking service, is concerned about their online presence and s
 Using Google and its built-in search criteria, any person with access can easily discover the name of the CEO of Altoro Mutual: *Karl Fitzgerald*. 
 
 Search terms used:
+
 `site:demo.testfire.net "Chief Executive Officer"`
 
 Using the name of the CEO, an attacker can attempt brute force attacks to access the website and other systems belonging to Altoro Mutual by attempting login credentials.
@@ -17,18 +18,23 @@ Using the name of the CEO, an attacker can attempt brute force attacks to access
 They can also spoof an email using his name and a similar email address to those automatically generated for employees to perform a social engineering campaign on other employees, or to target the CEO directly using his name through legitimate-looking emails.
 
 ## DNS and Domain Discovery
+
 Using Domain Dossier, one can discover various details about Altoro Mutual and its internal network attached to the domain `demo.testfire.com`.
 
 **Company Location**
+
 Sunnyvale, CA
 
 **NetRange IP Address**
+
 65.61.137.64 - 65.61.137.127
 
 **Infrastructure Storage**
+
 Rackspace Backbone Engineering
 
 **DNS Server IP Address**
+
 65.61.137.117
 
 ## Shodan
